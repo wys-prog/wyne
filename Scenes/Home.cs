@@ -21,7 +21,24 @@ public partial class GameObject
 
 public partial class Home : Control
 {
-  public static readonly string WYNE_PREFIX = ProjectSettings.GlobalizePath("user://Application Data/");
+  public static string GetWynePath()
+  {
+    string basePath;
+
+    if (OS.HasFeature("windows"))
+      basePath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData);
+    else if (OS.HasFeature("osx"))
+      basePath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal) 
+          + "/Library/Application Support";
+    else // Linux / BSD
+      basePath = System.Environment.GetEnvironmentVariable("XDG_DATA_HOME") 
+          ?? System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal) + "/.local/share";
+
+    return Path.Combine(basePath, "Wyne");
+  }
+
+
+  public static readonly string WYNE_PREFIX = GetWynePath() + "/Application Data/";
   public static readonly string WYNE_GAMES = WYNE_PREFIX + "Games";
   public static readonly string WYNE_SETTINGS = WYNE_PREFIX + "Settings";
   public static readonly string WYNE_SYSTEM = WYNE_PREFIX + "System";
