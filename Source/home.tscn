@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0tuu6sg2vxon"]
+
+[ext_resource type="PackedScene" uid="uid://dla0qijqhabsi" path="res://Source/main.tscn" id="1_bwpxs"]
+[ext_resource type="Theme" uid="uid://doq2lh3bv45e2" path="res://Data/StdTheme.tres" id="1_i0yek"]
+[ext_resource type="PackedScene" uid="uid://csw60pftfwmue" path="res://Source/wyne_system.tscn" id="1_qc0fs"]
+[ext_resource type="Script" uid="uid://blxo1r00h2gbs" path="res://Source/Home.cs" id="2_t5ofp"]
+[ext_resource type="PackedScene" uid="uid://cynouhn8527ri" path="res://Source/game_executor.tscn" id="3_t5ofp"]
+
+[node name="Home" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_i0yek")
+script = ExtResource("2_t5ofp")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Home" parent="TabContainer" instance=ExtResource("1_bwpxs")]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="GameExecutor" parent="TabContainer" instance=ExtResource("3_t5ofp")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="WyneSystem" parent="TabContainer" instance=ExtResource("1_qc0fs")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2

@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="Wyne"
-run/main_scene="uid://va50rrtoqols"
+run/main_scene="uid://b0tuu6sg2vxon"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1304
+window/size/viewport_height=712
 
 [dotnet]
 

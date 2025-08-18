@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cynouhn8527ri"]
+
+[ext_resource type="Script" uid="uid://bri0f0fto55qs" path="res://Source/GameExecutor.cs" id="2_hm71e"]
+
+[node name="GameExecutor" type="RichTextLabel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+scroll_following = true
+script = ExtResource("2_hm71e")
+metadata/_edit_use_anchors_ = true

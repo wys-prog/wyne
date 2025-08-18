@@ -1,0 +1,91 @@
+[gd_scene load_steps=3 format=3 uid="uid://dla0qijqhabsi"]
+
+[ext_resource type="Script" uid="uid://blvqciyvsq0q1" path="res://Source/Main.cs" id="1_wkcc7"]
+[ext_resource type="Script" uid="uid://cggicsjeqdvvs" path="res://Source/file_dialog.gd" id="2_kvypo"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wkcc7")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+anchor_left = 0.687117
+anchor_top = 0.365169
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.10352e-05
+metadata/_edit_use_anchors_ = true
+
+[node name="History" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00735294
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 2
+anchor_left = 0.687117
+anchor_right = 0.836656
+anchor_bottom = 0.365169
+offset_left = 6.10352e-05
+metadata/_edit_use_anchors_ = true
+
+[node name="RecentlyPlayedGames" type="VBoxContainer" parent="Panel2"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel3" type="Panel" parent="."]
+layout_mode = 2
+anchor_left = 0.836656
+anchor_right = 1.0
+anchor_bottom = 0.365169
+offset_left = 6.10352e-05
+metadata/_edit_use_anchors_ = true
+
+[node name="FavoriteGames" type="VBoxContainer" parent="Panel3"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.147239
+anchor_right = 0.196319
+anchor_bottom = 0.0898876
+text = "Wyne"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.0981595
+anchor_bottom = 0.0898876
+text = "+"
+metadata/_edit_use_anchors_ = true
+
+[node name="FileDialog" type="FileDialog" parent="Button"]
+title = "Choose a Directory"
+initial_position = 2
+ok_button_text = "Select Current Folder"
+file_mode = 2
+access = 2
+show_hidden_files = true
+use_native_dialog = true
+script = ExtResource("2_kvypo")
+
+[connection signal="pressed" from="Button" to="." method="GCall_on_pressed"]
+[connection signal="close_requested" from="Button/FileDialog" to="Button/FileDialog" method="_on_close_requested"]
+[connection signal="dir_selected" from="Button/FileDialog" to="." method="GCall_on_file_dialog_dir_selected"]
